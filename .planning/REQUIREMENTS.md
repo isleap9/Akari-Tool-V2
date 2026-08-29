@@ -82,20 +82,20 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ENG-01 through ENG-03 | Phase 1 | Pending |
-| ENG-04, ENG-05, ENG-06 | Phase 1 | Pending |
-| REG-01 through REG-07 | Phase 1 | Pending |
-| SVC-01, SVC-02 | Phase 1 | Pending |
-| PROC-01, PROC-02 | Phase 1 | Pending |
-| PWR-01, PWR-02 | Phase 2 | Pending |
-| MEM-01 | Phase 2 | Pending |
-| UI-01 through UI-02 | Phase 3 | Pending |
-| UI-03, UI-04, UI-05 | Phase 3 | Pending |
+| ENG-01 through ENG-03 | Phase 1: Engine & Registry Foundation | Pending |
+| ENG-04, ENG-05, ENG-06 | Phase 1: Engine & Registry Foundation | Pending |
+| REG-01 through REG-07 | Phase 1: Engine & Registry Foundation | Pending |
+| SVC-01, SVC-02 | Phase 2: Service & Process Management | Pending |
+| PROC-01, PROC-02 | Phase 2: Service & Process Management | Pending |
+| PWR-01, PWR-02 | Phase 3: Power, Memory & Platform Tweaks | Pending |
+| MEM-01 | Phase 3: Power, Memory & Platform Tweaks | Pending |
+| UI-01 through UI-02 | Phase 4: User Interface & Verified Release | Pending |
+| UI-03, UI-04, UI-05 | Phase 4: User Interface & Verified Release | Pending |
 
 **Coverage:**
-- v1 requirements: 24 total
-- Mapped to phases: 24
-- Unmapped: 0 ✓
+|- v1 requirements: 25 total
+|- Mapped to phases: 25
+|- Unmapped: 0 ✓
 
 ---
 
