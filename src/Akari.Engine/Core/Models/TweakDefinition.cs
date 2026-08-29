@@ -106,6 +106,26 @@ public class TweakDefinition
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? ServiceRevertStartValue { get; set; }
 
+    /// <summary>Power scheme GUID to activate when applying (e.g. 99999999-9999-9999-9999-999999999999).
+    /// Used by TweakType.Power tweaks (PWR-01, PWR-02).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PowerSchemeGuid { get; set; }
+
+    /// <summary>Base power scheme GUID to duplicate (e.g. e9a42b02-d5df-448d-aa00-03f14749eb61 for Ultimate Performance).
+    /// Used by PWR-01 to create a custom copy before activation.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PowerBaseSchemeGuid { get; set; }
+
+    /// <summary>PowerShell command to execute when applying (e.g. Disable-MMAgent -MemoryCompression).
+    /// Used by TweakType.Memory tweaks (MEM-01).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PowerShellCommand { get; set; }
+
+    /// <summary>PowerShell command to execute when reverting (e.g. Enable-MMAgent -MemoryCompression).
+    /// Used by TweakType.Memory tweaks (MEM-01).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PowerShellRevertCommand { get; set; }
+
     /// <summary>Whether the tweak requires an application restart or system reboot to take effect.</summary>
     public bool RequiresRestart { get; set; }
 

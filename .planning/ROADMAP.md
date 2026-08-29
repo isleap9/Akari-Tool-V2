@@ -12,8 +12,8 @@ Build a WinUI 3 MVVM toolbox for Windows 11 gamers that consolidates system-leve
 
 |- [x] **Phase 1: Engine & Registry Foundation** - Registry provider abstraction (2-arg OpenSubKey, RegistryView.Registry64), tweak engine dispatch (Strategy pattern), state service, logging, and 7 registry-based gaming tweaks (Game Mode, HAGS, NetworkThrottlingIndex, CPU priority, multimedia, visual effects, mouse acceleration)
 |- [x] **Phase 2: Service & Process Management** - Service management (Xbox background services, GameDVR/Game Bar) and process priority/affinity optimization for active games
-|- [ ] **Phase 3: Power, Memory & Platform Tweaks** - Power plan management (Ultimate Performance, High Performance fallback) and Windows memory compression toggle
-- [ ] **Phase 4: User Interface & Verified Release** - WinUI 3 modular checklist UI with categorized tweak groups, per-tweak toggle, admin elevation, batch apply with progress, and end-to-end elevated runtime verification + self-contained deployment
+|- [x] **Phase 3: Power, Memory & Platform Tweaks** - Power plan management (Ultimate Performance, High Performance fallback) and Windows memory compression toggle ✓
+||- [ ] **Phase 4: User Interface & Verified Release** - WinUI 3 modular checklist UI with categorized tweak groups, per-tweak toggle, admin elevation, batch apply with progress, and end-to-end elevated runtime verification + self-contained deployment
 
 ## Phase Details
 
@@ -78,8 +78,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: Power operation executor — `PowerOperationExecutor` using `powercfg.exe` via `Process.Start`; activates Ultimate Performance (PWR-01) with High Performance fallback (PWR-02) and GUID validation
-- [ ] 03-02: Memory operation executor — `MemoryOperationExecutor` using PowerShell `Disable-MMAgent` for memory compression toggle (MEM-01) with state tracking
+||- [x] 03-01: Power operation executor — `PowerOperationExecutor` using `powercfg.exe` via `Process.Start`; activates Ultimate Performance (PWR-01) with High Performance fallback (PWR-02) and GUID validation ✓
+||- [x] 03-02: Memory operation executor — `MemoryOperationExecutor` using PowerShell `Disable-MMAgent` for memory compression toggle (MEM-01) with state tracking ✓
 
 ### Phase 4: User Interface & Verified Release
 
@@ -99,7 +99,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: WinUI 3 modular checklist UI — `MainWindow` (NavigationView), `MainViewModel`, `TweakCategoryViewModel`; categorized groups from tweak catalog, per-tweak toggle (UI-01, UI-02)
+|- [ ] 04-01: WinUI 3 modular checklist UI — `MainWindow` (NavigationView), `MainViewModel`, `TweakCategoryViewModel`; categorized groups from tweak catalog, per-tweak toggle (UI-01, UI-02)
 - [ ] 04-02: Admin elevation + batch apply — `requireAdministrator` manifest (UI-03), applied/not-applied state display (UI-04), batch apply with progress indicator (UI-05)
 - [ ] 04-03: Integration testing & verified release — elevated runtime verification with log check, end-to-end apply/revert flow, self-contained deployment build, clean-Install validation
 
@@ -112,5 +112,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Engine & Registry Foundation | 3/3 | Complete | 01-01 ✓, 01-02 ✓, 01-03 ✓ |
 | 2. Service & Process Management | 2/2 | Complete | 02-01 ✓, 02-02 ✓ |
-| 3. Power, Memory & Platform Tweaks | 0/2 | Not started | - |
+| 3. Power, Memory & Platform Tweaks | 2/2 | Complete | 03-01 ✓, 03-02 ✓ |
 | 4. User Interface & Verified Release | 0/3 | Not started | - |
