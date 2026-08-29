@@ -163,6 +163,12 @@ public class AllTweaksTests
         Assert.Equal("6", def.RegistryValueData);  // High priority
         Assert.Equal("1", def.RegistryRevertValueData); // Default
         Assert.True(def.RequiresAdmin);
+        // Multi-value: GPU Priority, Priority, Scheduling Category
+        Assert.NotNull(def.RegistryMultiValues);
+        Assert.Equal(3, def.RegistryMultiValues!.Count);
+        Assert.Equal("8", def.RegistryMultiValues[0].ValueData);  // GPU Priority = 8
+        Assert.Equal("6", def.RegistryMultiValues[1].ValueData);  // Priority = 6
+        Assert.Equal("High", def.RegistryMultiValues[2].ValueData); // Scheduling Category = High
     }
 
     [Fact]
@@ -176,6 +182,13 @@ public class AllTweaksTests
         Assert.Equal("2", def.RegistryValueData);  // Disable animations
         Assert.Equal("3", def.RegistryRevertValueData); // Default
         Assert.True(def.RequiresAdmin);
+        // Multi-value: VisualFXSetting master switch + individual effect toggles
+        Assert.NotNull(def.RegistryMultiValues);
+        Assert.True(def.RegistryMultiValues!.Count >= 8); // Master switch + at least 7 individual effect toggles
+        // Verify individual visual effects are included
+        var multiValueNames = def.RegistryMultiValues.Select(v => v.ValueName).ToList();
+        Assert.Contains("VisualFXSetting", multiValueNames);
+        Assert.Contains("Default", multiValueNames); // For AnimateMinMax, Combo, Fade, Drag, Menu, Select, TaskbarList
     }
 
     [Fact]
@@ -270,6 +283,29 @@ public class BatchTweakTests
         var mouseSpeed = await registryProvider.GetValueAsync<int>(
             @"HKCU:\Control Panel\Desktop", "MouseSpeed");
         Assert.Equal(0, mouseSpeed);
+
+        // Verify REG-05 multi-values were set
+        var gpuPriority = await registryProvider.GetValueAsync<int>(
+            @"HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games", "GPU Priority");
+        Assert.Equal(8, gpuPriority);
+
+        var multimediaPriority = await registryProvider.GetValueAsync<int>(
+            @"HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games", "Priority");
+        Assert.Equal(6, multimediaPriority);
+
+        var schedulingCategory = await registryProvider.GetValueAsync<string>(
+            @"HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games", "Scheduling Category");
+        Assert.Equal("High", schedulingCategory);
+
+        // Verify REG-06 multi-value (VisualFXSetting master switch)
+        var visualFx = await registryProvider.GetValueAsync<int>(
+            @"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects", "VisualFXSetting");
+        Assert.Equal(2, visualFx);
+
+        // Verify REG-06 individual visual effects toggle
+        var animationDisable = await registryProvider.GetValueAsync<int>(
+            @"HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\AnimateMinMax", "Default");
+        Assert.Equal(1, animationDisable);
 
         Cleanup(tempDir);
     }
