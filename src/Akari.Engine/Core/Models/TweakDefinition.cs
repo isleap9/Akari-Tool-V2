@@ -79,6 +79,33 @@ public class TweakDefinition
     /// When populated, applies all values instead of the single RegistryValueName.</summary>
     public List<RegistryMultiValue>? RegistryMultiValues { get; set; }
 
+    /// <summary>Services managed by this tweak (for TweakType.Service).
+    /// Applies/disables and stops/starts these Windows services.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? ServiceNames { get; set; }
+
+    /// <summary>Processes targeted by this tweak (for TweakType.Process).
+    /// Used for PROC-01 (process priority by name) and PROC-02 (kill list).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? ProcessNames { get; set; }
+
+    /// <summary>Process priority to set when applying (for TweakType.Process, PROC-01).
+    /// Values: "Idle", "BelowNormal", "Normal", "AboveNormal", "High", "RealTime".</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? ProcessPriority { get; set; }
+
+    /// <summary>Service start type value to write to registry when applying (default 4 = disabled).
+    /// Service start registry value at HKLM\SYSTEM\CurrentControlSet\Services\service\Start.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? ServiceStartValue { get; set; }
+
+    /// <summary>Service start type value to write when reverting (default 3 = manual).
+    /// Service start registry value at HKLM\SYSTEM\CurrentControlSet\Services\service\Start.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? ServiceRevertStartValue { get; set; }
+
     /// <summary>Whether the tweak requires an application restart or system reboot to take effect.</summary>
     public bool RequiresRestart { get; set; }
 
