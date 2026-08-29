@@ -18,4 +18,10 @@
     <ProjectReference Include="..\Akari.Engine\Akari.Engine.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="tweaks.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

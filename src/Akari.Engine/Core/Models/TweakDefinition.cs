@@ -72,6 +72,13 @@ public class TweakDefinition
     /// <summary>The value to write when applying (serialized as JSON for type flexibility).</summary>
     public string? RegistryValueData { get; set; }
 
+    /// <summary>The value to write when reverting (disabled/default value). If null, the value is deleted.</summary>
+    public string? RegistryRevertValueData { get; set; }
+
+    /// <summary>Multi-value registry entries (e.g. Mouse Acceleration: MouseSpeed, MouseThreshold1, MouseThreshold2).
+    /// When populated, applies all values instead of the single RegistryValueName.</summary>
+    public List<RegistryMultiValue>? RegistryMultiValues { get; set; }
+
     /// <summary>Whether the tweak requires an application restart or system reboot to take effect.</summary>
     public bool RequiresRestart { get; set; }
 
@@ -104,4 +111,22 @@ public class TweakResult
 
     /// <summary>Timestamp of when this result was produced.</summary>
     public DateTimeOffset Timestamp { get; init; } = DateTimeOffset.Now;
+}
+
+/// <summary>
+/// Represents a single value in a multi-value registry tweak (e.g. Mouse Acceleration).
+/// </summary>
+public class RegistryMultiValue
+{
+    /// <summary>Full registry key path for this value (e.g. "HKCU:\Control Panel\Desktop").</summary>
+    public string Key { get; set; } = string.Empty;
+
+    /// <summary>The value name (e.g. "MouseSpeed").</summary>
+    public string ValueName { get; set; } = string.Empty;
+
+    /// <summary>The value data as a string (parsed by the executor based on RegistryValueKind).</summary>
+    public string ValueData { get; set; } = string.Empty;
+
+    /// <summary>The registry value kind.</summary>
+    public Microsoft.Win32.RegistryValueKind ValueKind { get; set; } = Microsoft.Win32.RegistryValueKind.DWord;
 }
