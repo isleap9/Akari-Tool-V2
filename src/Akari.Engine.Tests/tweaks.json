@@ -1,0 +1,30 @@
+[
+  {
+    "id": "REG-01",
+    "name": "Game Mode",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Enables Windows Game Mode for optimal gaming performance.",
+    "registryKey": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\GameList",
+    "registryValueName": "GameMode",
+    "registryValueKind": "DWord",
+    "registryValueData": "1",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "TEST-01",
+    "name": "Test Tweak",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "A test tweak for unit testing the engine dispatch.",
+    "registryKey": "HKLM:\\SOFTWARE\\Akari\\Test",
+    "registryValueName": "TestValue",
+    "registryValueKind": "DWord",
+    "registryValueData": "42",
+    "requiresRestart": false,
+    "requiresAdmin": false,
+    "sortOrder": 99
+  }
+]
