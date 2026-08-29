@@ -1,0 +1,18 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.useroscectable
+*.sln.docstates
+
+## NuGet
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Visual Studio
+*.psess
+*.vspscc
+*.vssscc
+.vs/
