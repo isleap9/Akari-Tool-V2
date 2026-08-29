@@ -1,15 +1,11 @@
 {
   "mode": "yolo",
-  "granularity": "standard",
+  "granularity": "coarse",
   "parallelization": true,
   "commit_docs": true,
   "model_profile": "adaptive",
   "workflow": {
-    "research": true,
-    "plan_check": true,
-    "verifier": true,
-    "nyquist_validation": true,
-    "auto_advance": true
+    "_auto_chain_active": true
   },
   "plan_review": {
     "source_grounding": true
@@ -24,7 +20,7 @@
       },
       {
         "heading": "Risks & Dependencies",
-        "enabled": true,
+        "enabled": false,
         "source": "PLAN.md ## Risks || PLAN.md ## Dependencies",
         "fallback": "- No known high-risk rollout dependencies."
       },
