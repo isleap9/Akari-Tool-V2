@@ -10,7 +10,7 @@ Build a WinUI 3 MVVM toolbox for Windows 11 gamers that consolidates system-leve
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: Engine & Registry Foundation** - Registry provider abstraction (2-arg OpenSubKey, RegistryView.Registry64), tweak engine dispatch (Strategy pattern), state service, logging, and 7 registry-based gaming tweaks (Game Mode, HAGS, NetworkThrottlingIndex, CPU priority, multimedia, visual effects, mouse acceleration)
+|- [ ] **Phase 1: Engine & Registry Foundation** - Registry provider abstraction (2-arg OpenSubKey, RegistryView.Registry64), tweak engine dispatch (Strategy pattern), state service, logging, and 7 registry-based gaming tweaks (Game Mode, HAGS, NetworkThrottlingIndex, CPU priority, multimedia, visual effects, mouse acceleration)
 - [ ] **Phase 2: Service & Process Management** - Service management (Xbox background services, GameDVR/Game Bar) and process priority/affinity optimization for active games
 - [ ] **Phase 3: Power, Memory & Platform Tweaks** - Power plan management (Ultimate Performance, High Performance fallback) and Windows memory compression toggle
 - [ ] **Phase 4: User Interface & Verified Release** - WinUI 3 modular checklist UI with categorized tweak groups, per-tweak toggle, admin elevation, batch apply with progress, and end-to-end elevated runtime verification + self-contained deployment
@@ -35,7 +35,7 @@ Build a WinUI 3 MVVM toolbox for Windows 11 gamers that consolidates system-leve
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Registry provider abstraction — `IRegistryProvider`, `Win32RegistryProvider` with 2-arg `OpenSubKey(path, true)` and explicit `RegistryView.Registry64`; `FakeRegistryProvider` for unit tests (logic only, not ACL)
+- [x] 01-01: Registry provider abstraction — `IRegistryProvider` interface, `Win32RegistryProvider` with 2-arg `OpenSubKey(path, true)` and explicit `RegistryView.Registry64`; `FakeRegistryProvider` for unit tests (logic only, not ACL) ✓
 - [ ] 01-02: Tweak engine core — `ITweakEngine` Strategy dispatch, `ITweakExecutor` interface, `ITweakStateService` (JSON persistence + startup re-validation), `ILogService` (file logging to `%LOCALAPPDATA%\Akari\App\logs\`)
 - [ ] 01-03: Implement all 7 registry tweaks (REG-01 through REG-07) — Game Mode, HAGS, NetworkThrottlingIndex, Win32PrioritySeparation, Multimedia Tasks\Games, Visual Effects, Mouse Acceleration
 
@@ -110,7 +110,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Engine & Registry Foundation | 0/3 | Not started | - |
+| 1. Engine & Registry Foundation | 1/3 | In progress | 01-01 ✓ |
 | 2. Service & Process Management | 0/2 | Not started | - |
 | 3. Power, Memory & Platform Tweaks | 0/2 | Not started | - |
 | 4. User Interface & Verified Release | 0/3 | Not started | - |
