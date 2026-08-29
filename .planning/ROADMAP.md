@@ -36,7 +36,7 @@ Build a WinUI 3 MVVM toolbox for Windows 11 gamers that consolidates system-leve
 
 Plans:
 - [x] 01-01: Registry provider abstraction — `IRegistryProvider` interface, `Win32RegistryProvider` with 2-arg `OpenSubKey(path, true)` and explicit `RegistryView.Registry64`; `FakeRegistryProvider` for unit tests (logic only, not ACL) ✓
-- [ ] 01-02: Tweak engine core — `ITweakEngine` Strategy dispatch, `ITweakExecutor` interface, `ITweakStateService` (JSON persistence + startup re-validation), `ILogService` (file logging to `%LOCALAPPDATA%\Akari\App\logs\`)
+- [x] 01-02: Tweak engine core — `ITweakEngine` Strategy dispatch, `ITweakExecutor` interface, `ITweakStateService` (JSON persistence + startup re-validation), `ILogService` (file logging to `%LOCALAPPDATA%\Akari\App\logs\`) ✓
 - [ ] 01-03: Implement all 7 registry tweaks (REG-01 through REG-07) — Game Mode, HAGS, NetworkThrottlingIndex, Win32PrioritySeparation, Multimedia Tasks\Games, Visual Effects, Mouse Acceleration
 
 ### Phase 2: Service & Process Management
