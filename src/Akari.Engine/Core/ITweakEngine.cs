@@ -33,6 +33,12 @@ public interface ITweakEngine
     Task<IReadOnlyList<TweakResult>> ApplyBatchAsync(IEnumerable<string> tweakIds);
 
     /// <summary>
+    /// Asynchronously reverts multiple tweaks in a batch.
+    /// Returns results for each tweak, in order.
+    /// </summary>
+    Task<IReadOnlyList<TweakResult>> RevertBatchAsync(IEnumerable<string> tweakIds);
+
+    /// <summary>
     /// Returns the current status of the tweak with the given ID.
     /// </summary>
     Task<TweakStatus> GetStatusAsync(string tweakId);

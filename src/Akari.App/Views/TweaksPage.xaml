@@ -1,0 +1,147 @@
+<Page
+    x:Class="Akari.App.Views.TweaksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:Akari.App.ViewModels"
+    xmlns:conv="using:AppTemplate.Framework.Converters">
+
+    <Page.Resources>
+        <conv:InvertedBooleanToVisibilityConverter x:Key="InverseBoolToVis" />
+        <conv:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <conv:InvertedBooleanConverter x:Key="InverseBoolConverter" />
+        <SolidColorBrush x:Key="AppliedBrush" Color="#FF2E8B57" />
+        <SolidColorBrush x:Key="NotAppliedBrush" Color="#FFB0B0B0" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Modular checklist: categories with per-tweak toggle -->
+            <ItemsControl
+                x:Name="CategoriesList"
+                Grid.Row="0"
+                ItemsSource="{x:Bind ViewModel.Categories, Mode=OneWay}">
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:TweakCategoryViewModel">
+                        <Expander
+                            Header="{x:Bind DisplayName, Mode=OneWay}"
+                            IsExpanded="True"
+                            Padding="12"
+                            Margin="0,0,0,8">
+
+                            <ItemsControl
+                                ItemsSource="{x:Bind Tweaks}">
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:TweakViewModel">
+                                        <Grid Margin="12,4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Applied indicator dot: green when applied, gray when not -->
+                                            <Border
+                                                Grid.Column="0"
+                                                Width="12"
+                                                Height="12"
+                                                CornerRadius="6"
+                                                Background="{StaticResource AppliedBrush}"
+                                                Visibility="{x:Bind IsApplied, Converter={StaticResource BoolToVis}, Mode=OneWay}"
+                                                Margin="0,0,8,0"
+                                                VerticalAlignment="Center" />
+                                            <Border
+                                                Grid.Column="0"
+                                                Width="12"
+                                                Height="12"
+                                                CornerRadius="6"
+                                                Background="{StaticResource NotAppliedBrush}"
+                                                Visibility="{x:Bind IsApplied, Converter={StaticResource InverseBoolToVis}, Mode=OneWay}"
+                                                Margin="0,0,8,0"
+                                                VerticalAlignment="Center" />
+
+                                            <!-- Tweak name -->
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Text="{x:Bind Name, Mode=OneWay}"
+                                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                                VerticalAlignment="Center" />
+
+                                            <!-- Description -->
+                                            <TextBlock
+                                                Grid.Column="2"
+                                                Text="{x:Bind Description, Mode=OneWay}"
+                                                TextWrapping="Wrap"
+                                                Opacity="0.7"
+                                                VerticalAlignment="Center"
+                                                Margin="12,0,0,0" />
+
+                                            <!-- Apply button -->
+                                            <Button
+                                                Grid.Column="3"
+                                                Content="Apply"
+                                                Command="{x:Bind ApplyCommand, Mode=OneWay}"
+                                                IsEnabled="{x:Bind IsBusy, Converter={StaticResource InverseBoolConverter}, Mode=OneWay}"
+                                                Margin="12,0,0,0"
+                                                VerticalAlignment="Center" />
+
+                                            <!-- Revert button -->
+                                            <Button
+                                                Grid.Column="4"
+                                                Content="Revert"
+                                                Command="{x:Bind RevertCommand, Mode=OneWay}"
+                                                IsEnabled="{x:Bind IsBusy, Converter={StaticResource InverseBoolConverter}, Mode=OneWay}"
+                                                Margin="8,0,0,0"
+                                                VerticalAlignment="Center" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Expander>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Apply Selected + Progress bar -->
+            <StackPanel
+                Grid.Row="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                Margin="0,16,0,0">
+
+                <CheckBox
+                    Content="Select All"
+                    IsChecked="{x:Bind ViewModel.HasAllSelected, Mode=TwoWay}"
+                    Margin="8,0" />
+
+                <Button
+                    Content="Apply Selected"
+                    Command="{x:Bind ViewModel.ApplyAllCommand, Mode=OneWay}"
+                    IsEnabled="{x:Bind ViewModel.HasSelectedTweaks, Mode=OneWay}"
+                    Margin="16,0,0,0" />
+
+                <ProgressBar
+                    Value="{x:Bind ViewModel.BatchProgress, Mode=OneWay}"
+                    IsIndeterminate="{x:Bind ViewModel.IsBatchApplying, Mode=OneWay}"
+                    Width="200"
+                    Height="8"
+                    Margin="16,0,0,0"
+                    VerticalAlignment="Center" />
+
+                <TextBlock
+                    Text="{x:Bind ViewModel.BatchStatusText, Mode=OneWay}"
+                    VerticalAlignment="Center"
+                    Margin="8,0,0,0"
+                    Opacity="0.7" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

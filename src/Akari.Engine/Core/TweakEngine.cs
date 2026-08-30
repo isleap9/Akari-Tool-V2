@@ -164,6 +164,24 @@ public class TweakEngine : ITweakEngine
     }
 
     /// <summary>
+    /// Reverts multiple tweaks in a batch. Returns results in the same order as input.
+    /// </summary>
+    public async Task<IReadOnlyList<TweakResult>> RevertBatchAsync(IEnumerable<string> tweakIds)
+    {
+        var ids = tweakIds.ToList();
+        return await Task.Run(async () =>
+        {
+            var results = new List<TweakResult>();
+            foreach (var id in ids)
+            {
+                var result = await RevertAsync(id);
+                results.Add(result);
+            }
+            return (IReadOnlyList<TweakResult>)results;
+        });
+    }
+
+    /// <summary>
     /// Returns the persisted status for the given tweak ID.
     /// </summary>
     public async Task<TweakStatus> GetStatusAsync(string tweakId)

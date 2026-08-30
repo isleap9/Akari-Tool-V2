@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Akari.Engine/Akari.Engine.csproj" />
+  <Project Path="Akari.Engine.Tests/Akari.Engine.Tests.csproj" />
+  <Project Path="Akari.App.Framework/AppTemplate.Framework.csproj" />
+  <Project Path="Akari.App/Akari.App.csproj" />
+</Solution>

@@ -1,0 +1,350 @@
+[
+  {
+    "id": "REG-01",
+    "name": "Game Mode",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Enables Windows Game Mode for optimal gaming performance by prioritizing game processes.",
+    "registryKey": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\GameList",
+    "registryValueName": "GameMode",
+    "registryValueKind": "DWord",
+    "registryValueData": "1",
+    "registryRevertValueData": "0",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "REG-02",
+    "name": "HAGS (Hardware-Accelerated GPU Scheduling)",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Enables hardware-accelerated GPU scheduling for lower latency and reduced stutter.",
+    "registryKey": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers",
+    "registryValueName": "HwSchMode",
+    "registryValueKind": "DWord",
+    "registryValueData": "2",
+    "registryRevertValueData": "1",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 2
+  },
+  {
+    "id": "REG-03",
+    "name": "Network Throttling Index",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Disables network throttling (NetworkThrottlingIndex = 0xFFFFFFFF) to reduce latency for gaming traffic.",
+    "registryKey": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+    "registryValueName": "NetworkThrottlingIndex",
+    "registryValueKind": "DWord",
+    "registryValueData": "4294967295",
+    "registryRevertValueData": "3",
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 3
+  },
+  {
+    "id": "REG-04",
+    "name": "Win32 Priority Separation",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Sets Win32PrioritySeparation=26 (0x26) to prioritize foreground apps and reduce background task CPU usage during gaming.",
+    "registryKey": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl",
+    "registryValueName": "Win32PrioritySeparation",
+    "registryValueKind": "DWord",
+    "registryValueData": "26",
+    "registryRevertValueData": "38",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 4
+  },
+  {
+    "id": "REG-05",
+    "name": "Multimedia System Profile Priority",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Sets the Games multimedia task Priority=6 (High), GPU Priority=8 (High), and Scheduling Category=High for elevated scheduling priority during gaming.",
+    "registryKey": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+    "registryValueName": "Priority",
+    "registryValueKind": "DWord",
+    "registryValueData": "6",
+    "registryRevertValueData": "1",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 5,
+    "registryMultiValues": [
+      {
+        "key": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "valueName": "GPU Priority",
+        "valueData": "8",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "valueName": "Priority",
+        "valueData": "6",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "valueName": "Scheduling Category",
+        "valueData": "High",
+        "valueKind": "String"
+      }
+    ]
+  },
+  {
+    "id": "REG-06",
+    "name": "Visual Effects Optimization",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Disables visual animations, transparency, and shadows (VisualFXSetting=2 plus individual effect toggles) to reduce GPU/CPU overhead during gaming.",
+    "registryKey": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+    "registryValueName": "VisualFXSetting",
+    "registryValueKind": "DWord",
+    "registryValueData": "2",
+    "registryRevertValueData": "3",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 6,
+    "registryMultiValues": [
+      {
+        "key": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+        "valueName": "VisualFXSetting",
+        "valueData": "2",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKEY_USERS\\.DEFAULT\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+        "valueName": "VisualFXSetting",
+        "valueData": "2",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+        "valueName": "VisualFXSetting",
+        "valueData": "2",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\AnimateMinMax",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\Combo",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\Fade",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\Drag",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\Menu",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\Select",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects\\TaskbarList",
+        "valueName": "Default",
+        "valueData": "1",
+        "valueKind": "DWord"
+      }
+    ]
+  },
+  {
+    "id": "REG-07",
+    "name": "Disable Mouse Acceleration",
+    "category": "Registry",
+    "type": "Registry",
+    "description": "Disables mouse acceleration for consistent, precise cursor movement during gaming.",
+    "registryKey": "HKCU:\\Control Panel\\Desktop",
+    "registryValueName": "MouseSpeed",
+    "registryValueKind": "DWord",
+    "registryValueData": "0",
+    "registryRevertValueData": "2",
+    "requiresRestart": false,
+    "requiresAdmin": false,
+    "sortOrder": 7,
+    "registryMultiValues": [
+      {
+        "key": "HKCU:\\Control Panel\\Desktop",
+        "valueName": "MouseSpeed",
+        "valueData": "0",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Control Panel\\Desktop",
+        "valueName": "MouseThreshold1",
+        "valueData": "0",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Control Panel\\Desktop",
+        "valueName": "MouseThreshold2",
+        "valueData": "0",
+        "valueKind": "DWord"
+      }
+    ]
+  },
+  {
+    "id": "SVC-01",
+    "name": "Xbox Background Services",
+    "category": "Services",
+    "type": "Service",
+    "description": "Disables Xbox background services (Xbox Live Auth Manager, Xbox Live Game Save, Xbox Game Input, Xbox Networking, Gaming Services, GameDVR/Broadcast, GameInput) to free system resources during gaming.",
+    "serviceNames": [
+      "XblAuthManager",
+      "XblGameSave",
+      "XboxGipSvc",
+      "XboxNetApiSvc",
+      "GamingServices",
+      "BcastDVRUserService",
+      "GameInputSvc"
+    ],
+    "serviceStartValue": "4",
+    "serviceRevertStartValue": "3",
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "SVC-02",
+    "name": "GameDVR & Game Bar",
+    "category": "Services",
+    "type": "Service",
+    "description": "Disables GameDVR screen recording and the Xbox Game Bar overlay (UseNexusForGameBar, GamepadNexusChord, AppCaptureEnabled, PresenceServer ActivationType). Also stops related services.",
+    "serviceNames": [
+      "BcastDVRUserService",
+      "GameInputSvc",
+      "XboxGipSvc",
+      "XblAuthManager",
+      "XblGameSave",
+      "XboxNetApiSvc"
+    ],
+    "serviceStartValue": "4",
+    "serviceRevertStartValue": "3",
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 2,
+    "registryMultiValues": [
+      {
+        "key": "HKCU:\\System\\GameConfigStore",
+        "valueName": "GameDVR_Enabled",
+        "valueData": "0",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR",
+        "valueName": "AppCaptureEnabled",
+        "valueData": "0",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\GameBar",
+        "valueName": "UseNexusForGameBarEnabled",
+        "valueData": "0",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKCU:\\Software\\Microsoft\\GameBar",
+        "valueName": "GamepadNexusChordEnabled",
+        "valueData": "0",
+        "valueKind": "DWord"
+      },
+      {
+        "key": "HKLM:\\SOFTWARE\\Microsoft\\WindowsRuntime\\ActivatableClassId\\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter",
+        "valueName": "ActivationType",
+        "valueData": "0",
+        "valueKind": "DWord"
+      }
+    ]
+  },
+  {
+    "id": "PROC-01",
+    "name": "Game Process Priority",
+    "category": "Process",
+    "type": "Process",
+    "description": "Sets the active game process to High priority to prioritize CPU scheduling for gaming. Process is selected at runtime from running processes with WorkingSet64 > 500MB.",
+    "processPriority": "High",
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "PROC-02",
+    "name": "Background Process Management",
+    "category": "Process",
+    "type": "Process",
+    "description": "Stops game launcher and background processes during gaming to free system resources: Battle.net, BsgLauncher, EADesktop, EpicGamesLauncher, GalaxyClient, RobloxPlayerBeta, RiotClientServices, Launcher, steam, upc.",
+    "processNames": [
+      "Battle.net",
+      "BsgLauncher",
+      "EADesktop",
+      "EpicGamesLauncher",
+      "GalaxyClient",
+      "RobloxPlayerBeta",
+      "RiotClientServices",
+      "Launcher",
+      "steam",
+      "upc"
+    ],
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 2
+  },
+  {
+    "id": "PWR-01",
+    "name": "Ultimate Performance",
+    "category": "Power",
+    "type": "Power",
+    "description": "Activates the Ultimate Performance power scheme for maximum gaming performance. Duplicates the Ultimate Performance base scheme and sets it as active. Falls back to High Performance if Ultimate Performance is not available.",
+    "powerSchemeGuid": "99999999-9999-9999-9999-999999999999",
+    "powerBaseSchemeGuid": "e9a42b02-d5df-448d-aa00-03f14749eb61",
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "PWR-02",
+    "name": "High Performance (Fallback)",
+    "category": "Power",
+    "type": "Power",
+    "description": "Activates the High Performance power scheme. Used as a fallback when Ultimate Performance is not available.",
+    "powerSchemeGuid": "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c",
+    "requiresRestart": false,
+    "requiresAdmin": true,
+    "sortOrder": 2
+  },
+  {
+    "id": "MEM-01",
+    "name": "Memory Compression",
+    "category": "Memory",
+    "type": "Memory",
+    "description": "Disables Windows memory compression to reduce CPU overhead during high-memory-pressure gaming scenarios. Disabling memory compression may help on systems with ample RAM (16GB+). Requires admin elevation and may require a system reboot.",
+    "powerShellCommand": "Disable-MMAgent -MemoryCompression",
+    "powerShellRevertCommand": "Enable-MMAgent -MemoryCompression",
+    "requiresRestart": true,
+    "requiresAdmin": true,
+    "sortOrder": 1
+  }
+]
